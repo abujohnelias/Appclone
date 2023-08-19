@@ -22,6 +22,9 @@ class _SelectdirectionState extends State<Selectdirection> {
   ];
 
   int currentIndex = 0;
+  String to = "";
+  String from = "";
+  String temp = "";
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +98,10 @@ class _SelectdirectionState extends State<Selectdirection> {
                     textfieldPadding: 10,
                     textfieldRadious: 20,
                     textfieldBorderColor: Colors.amber,
-                    
+                    onChanged: (String toValue) {
+                      to = toValue;
+                      print(to);
+                    },
                   ),
                   SizedBox(
                     height: 35,
@@ -106,6 +112,10 @@ class _SelectdirectionState extends State<Selectdirection> {
                     textfieldPadding: 10,
                     textfieldRadious: 20,
                     textfieldBorderColor: Colors.cyan,
+                    onChanged: (String fromValue) {
+                      from = fromValue;
+                      print(from);
+                    },
                   ),
                 ],
               ),
@@ -117,7 +127,15 @@ class _SelectdirectionState extends State<Selectdirection> {
                 child: RotatedBox(
                   quarterTurns: 5,
                   child: CUsFloatingButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        temp = to;
+                        to = from;
+                        from = temp;
+                        print(from);
+                        print(to);
+                      });
+                    },
                     isFloatingButtonChild_Text: false,
                     floatingbuttoIcon: Icons.compare_arrows_rounded,
                     floatingbuttoIconColor: Colors.white,

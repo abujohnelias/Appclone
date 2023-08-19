@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class CusTextField extends StatelessWidget {
+class CusTextField extends StatefulWidget {
+  final ValueChanged<String> onChanged;
   final double textfieldHeight;
   final double textfieldWidth;
   final double textfieldPadding;
@@ -10,33 +11,44 @@ class CusTextField extends StatelessWidget {
   final Color? textfieldBorderColor;
   final Color? textfieldBorderFillColor;
   final bool? textfieldBorderIsFilled;
-  const CusTextField(
-      {super.key,
-      required this.textfieldHeight,
-      required this.textfieldWidth,
-      required this.textfieldPadding,
-      required this.textfieldRadious,
-      required this.textfieldBorderColor,
-      this.textfieldBorderFillColor,
-      this.textfieldBorderIsFilled});
 
+  const CusTextField({
+    super.key,
+    required this.textfieldHeight,
+    required this.textfieldWidth,
+    required this.textfieldPadding,
+    required this.textfieldRadious,
+    required this.textfieldBorderColor,
+    this.textfieldBorderFillColor,
+    this.textfieldBorderIsFilled,
+    required this.onChanged,
+  });
+
+  @override
+  State<CusTextField> createState() => _CusTextFieldState();
+}
+
+class _CusTextFieldState extends State<CusTextField> {
+  String? inputt = "";
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: textfieldHeight,
-      width: textfieldWidth,
+      height: widget.textfieldHeight,
+      width: widget.textfieldWidth,
       child: TextField(
+        onChanged: widget.onChanged,
         decoration: InputDecoration(
-            fillColor: textfieldBorderFillColor,
-            filled: textfieldBorderIsFilled,
+            fillColor: widget.textfieldBorderFillColor,
+            filled: widget.textfieldBorderIsFilled,
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: textfieldBorderColor!, width: 2),
-                borderRadius: BorderRadius.circular(textfieldRadious)),
+                borderSide:
+                    BorderSide(color: widget.textfieldBorderColor!, width: 2),
+                borderRadius: BorderRadius.circular(widget.textfieldRadious)),
             contentPadding: EdgeInsets.only(left: 50, top: 50),
             border: OutlineInputBorder(
                 borderSide: BorderSide(),
                 gapPadding: 50,
-                borderRadius: BorderRadius.circular(textfieldRadious))),
+                borderRadius: BorderRadius.circular(widget.textfieldRadious))),
       ),
     );
   }

@@ -1,9 +1,11 @@
-import 'package:clone_app/view/sections/bookingScreen/bookingScreen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../bookingScreen/seatbookingScreen.dart';
 
 class FlightDetails extends StatelessWidget {
   FlightDetails({super.key});
@@ -131,7 +133,7 @@ class FlightDetails extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BookingScreen()));
+                              builder: (context) => SeatBookingScreen()));
                     },
                     child: Wrap(
                       alignment: WrapAlignment.center,
