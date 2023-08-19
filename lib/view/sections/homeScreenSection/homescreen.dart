@@ -1,3 +1,4 @@
+import 'package:clone_app/view/sections/homeScreenSection/flightdetail.dart';
 import 'package:clone_app/view/sections/homeScreenSection/selectDirection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -66,7 +67,7 @@ class _HomePageState1 extends State<HomePage1> {
 
             ///sorting dropdown
             Positioned(
-              top: 420,
+              top: 390,
               left: 55,
               child: Row(
                 children: [
@@ -83,7 +84,7 @@ class _HomePageState1 extends State<HomePage1> {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 2,right: 2),
+                      padding: const EdgeInsets.only(left: 2, right: 2),
                       child: DropdownButton(
                           underline: SizedBox(),
                           style: GoogleFonts.poppins(),
@@ -110,7 +111,18 @@ class _HomePageState1 extends State<HomePage1> {
                   )
                 ],
               ),
-            )
+            ),
+
+            ///flight details
+            Positioned(
+                top: 450,
+                left: 55,
+                child: SingleChildScrollView(
+                  child: SizedBox(
+                      width: 400,
+                      height: 300,
+                      child: Card(child: FlightDetails(),elevation: 20,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),)),
+                ))
           ],
         ),
       ),
