@@ -1,6 +1,7 @@
 import 'package:clone_app/widgets/CusElevatedButton.dart';
 import 'package:clone_app/widgets/CusIconButton.dart';
 import 'package:clone_app/widgets/CusTextField.dart';
+import 'package:clone_app/widgets/cusFloatingButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -37,7 +38,7 @@ class _SelectdirectionState extends State<Selectdirection> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.black38,
+                    color: Color.fromARGB(255, 235, 235, 235),
                     borderRadius: BorderRadius.circular(15)),
                 child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
@@ -93,6 +94,8 @@ class _SelectdirectionState extends State<Selectdirection> {
                     textfieldWidth: 350,
                     textfieldPadding: 10,
                     textfieldRadious: 20,
+                    textfieldBorderColor: Colors.amber,
+                    
                   ),
                   SizedBox(
                     height: 35,
@@ -102,16 +105,75 @@ class _SelectdirectionState extends State<Selectdirection> {
                     textfieldWidth: 350,
                     textfieldPadding: 10,
                     textfieldRadious: 20,
+                    textfieldBorderColor: Colors.cyan,
                   ),
                 ],
               ),
 
               ///iconbutton used to swap to & from
-              // CusElevatedButton(
-              //     onPressed: () {},
-              //     buttonRadious: 10,
-              //     IsYourButtonChildTEXT: false,
-              //     buttonIcon: Icons.swap_vert_outlined,buttonHeight: 10,buttonWidth: 10,)
+              Positioned(
+                top: 30,
+                right: 10,
+                child: RotatedBox(
+                  quarterTurns: 5,
+                  child: CUsFloatingButton(
+                    onPressed: () {},
+                    isFloatingButtonChild_Text: false,
+                    floatingbuttoIcon: Icons.compare_arrows_rounded,
+                    floatingbuttoIconColor: Colors.white,
+                    floatingbuttoIconSize: 35,
+                    floatingbuttonElevation: 20,
+                  ),
+                ),
+              ),
+
+              ///other elements and text
+
+              /* elements and text for "FROM" textfield(start)*/
+              const Positioned(
+                top: 5,
+                left: 15,
+                child: RotatedBox(
+                  quarterTurns: 5,
+                  child: Icon(
+                    Icons.airplanemode_active_rounded,
+                    color: Colors.amber,
+                    size: 25,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 1,
+                left: 45,
+                child: Text(
+                  "From",
+                  style: GoogleFonts.poppins(color: Colors.grey, fontSize: 12),
+                ),
+              ),
+              /* elements and text for "FROM" textfield(end)*/
+
+              /* elements and text for "TO" textfield(Start)*/
+              const Positioned(
+                top: 103,
+                left: 15,
+                child: RotatedBox(
+                  quarterTurns: -5,
+                  child: Icon(
+                    Icons.airplanemode_active_rounded,
+                    color: Colors.cyan,
+                    size: 25,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 85,
+                left: 45,
+                child: Text(
+                  "To",
+                  style: GoogleFonts.poppins(color: Colors.grey, fontSize: 12),
+                ),
+              ),
+              /* elements and text for "TO" textfield(end)*/
             ],
           )
         ],

@@ -4,14 +4,20 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+final Sortlist = <String>[
+  'Price(low-high)',
+  'Price(high-low)',
+];
+
 class HomePage1 extends StatefulWidget {
-  const HomePage1({super.key});
+  const HomePage1({Key? key}) : super(key: key);
 
   @override
   State<HomePage1> createState() => _HomePageState1();
 }
 
 class _HomePageState1 extends State<HomePage1> {
+  String selectedValue = Sortlist.first;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +55,7 @@ class _HomePageState1 extends State<HomePage1> {
                   width: 400,
                   height: 300,
                   child: Card(
+                    elevation: 20,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
@@ -56,6 +63,54 @@ class _HomePageState1 extends State<HomePage1> {
                     color: Colors.white,
                   )),
             ),
+
+            ///sorting dropdown
+            Positioned(
+              top: 420,
+              left: 55,
+              child: Row(
+                children: [
+                  Text(
+                    "Sort By",
+                    style: GoogleFonts.poppins(
+                        color: Color.fromARGB(255, 102, 101, 101)),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 2,right: 2),
+                      child: DropdownButton(
+                          underline: SizedBox(),
+                          style: GoogleFonts.poppins(),
+                          hint: Text(
+                            "Sort By",
+                          ),
+                          value: selectedValue,
+                          icon: Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Colors.orange,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          onChanged: (value01) {
+                            selectedValue = value01!;
+                          },
+                          items: Sortlist.map((e) => DropdownMenuItem(
+                                child: Text(
+                                  e,
+                                  style: GoogleFonts.poppins(),
+                                ),
+                                value: e,
+                              )).toList()),
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
