@@ -1,4 +1,4 @@
-import 'package:clone_app/view/firstScreen.dart';
+import 'package:clone_app/view/sections/firstScreenScetion/firstScreen.dart';
 import 'package:clone_app/view/sections/homeScreenSection/homescreen.dart';
 import 'package:flutter/material.dart';
 
